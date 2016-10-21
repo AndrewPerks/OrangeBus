@@ -17,6 +17,8 @@ namespace SkeletonCode.CurrencyConverter
 		        }
 
                 // Conversion
+		        var rate = GetRate(inputCurrency);
+		        amount = amount * rate;
 		        return amount;
 		    }
 		    catch (InvalidCurrencyException ex)
