@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,36 +7,45 @@ namespace SkeletonCode.CardGame
 {
 	public class PackOfCards : IPackOfCards
 	{
-        public List<ICard> _list = new List<ICard>();
+        public List<ICard> Cards = new List<ICard>();
 
         public void Add(Card card)
         {
-            _list.Add(card);
+            Cards.Add(card);
         }
 
 	    public IEnumerator<ICard> GetEnumerator()
 	    {
-            return _list.GetEnumerator(); 	       
+            return Cards.GetEnumerator(); 	       
 	    }
 
 	    IEnumerator IEnumerable.GetEnumerator()
 	    {
-            return _list.GetEnumerator();
-	        //return GetEnumerator();
+            return Cards.GetEnumerator();
 	    }
 
-        public int Count { get { return _list.Count; } }
+        public int Count { get { return Cards.Count; } }
 
 	    public void Shuffle()
 	    {
-	        throw new System.NotImplementedException();
+            int n = Cards.Count;
+            Random rnd = new Random();
+            // Fisher-Yates algorithm
+            while (n > 1)
+            {
+                int k = (rnd.Next(0, n) % n);
+                n--;
+                ICard value = Cards[k];
+                Cards[k] = Cards[n];
+                Cards[n] = value;
+            }
 	    }
 
 	    public ICard TakeCardFromTopOfPack()
 	    {
-	        var lastIndex = _list.Count - 1;
-	        var cardToBeRemoved = _list.ElementAt(lastIndex);
-            _list.RemoveAt(lastIndex);
+	        var lastIndex = Cards.Count - 1;
+	        var cardToBeRemoved = Cards.ElementAt(lastIndex);
+            Cards.RemoveAt(lastIndex);
             return cardToBeRemoved;	        
 	    }
 	}
