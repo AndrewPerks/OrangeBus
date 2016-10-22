@@ -1,16 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace SkeletonCode.CardGame
 {
 	public class PackOfCardsCreator : IPackOfCardsCreator
 	{
-		public IPackOfCards Create()
-		{
-			throw new NotImplementedException();
-		}
+	    const int AmountOfCards = 52;
+
+        public IPackOfCards Create()
+        {
+            var pack = new PackOfCards();
+            var cardList = new List<Card>();
+
+            for (int i = 0; i < AmountOfCards; i++)
+            {
+                // get random card
+                var card = new Card(SuitType.Clubs, "2");
+                pack.Add(card);        
+            }                                                  
+                        
+            return pack; 
+        }
 	}
 }
