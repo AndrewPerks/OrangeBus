@@ -28,31 +28,30 @@ String.prototype.spineCaseToCamelCase = function() {
     return output;
 }
 
-
-
-String.prototype.format = function(argument, argument2, argument3) {
-    var input = this;
+String.prototype.format = function () {
+    var args = arguments;
+    var input = this;        
     var output = "";
-    console.log(input);
 
-    if (argument === undefined || argument === null) {
-        output = "string without any arguments";
-    }
-    else
-    {
+    if (input.length > 0) {
 
-        if (typeof argument === 'string' || argument instanceof String) {
-            output = "string with " + argument + " argument";
+        if (args[0] === undefined || args[0] === null) {
+            output = "string without any arguments";
         }
-        if (argument === 1) {
-            output = "string with the number " + argument + " in it.";
+        else {
+
+            if (typeof args[0] === 'string' || args[0] instanceof String) {
+                output = "string with " + args[0] + " argument";
+            }
+            if (args[0] === 1) {
+                output = "string with the number " + args[0] + " in it.";
+            }
+            if (args[0] != null && args[1] != null && args[2] != null) {
+                output = "string with " + args[0] + ", " + args[1] + ", " + args[2] + " or more arguments";
+            }
+
         }
-        else if (argument != null && argument2 != null && argument3 != null) {
-            output = "string with " + argument + ", " + argument2 + ", " + argument3 + " or more arguments";
-        }
-        
     }
-    
-    
+
     return output;
 }
