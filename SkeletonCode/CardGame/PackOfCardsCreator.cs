@@ -1,22 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using SkeletonCode.CardGame.Enums;
 
 namespace SkeletonCode.CardGame
 {
 	public class PackOfCardsCreator : IPackOfCardsCreator
 	{
-	    const int AmountOfCards = 52;
 
         public IPackOfCards Create()
         {
             var pack = new PackOfCards();
-            var cardList = new List<Card>();
 
-            for (int i = 0; i < AmountOfCards; i++)
+            foreach (Rank rank in Enum.GetValues(typeof(Rank)))
             {
-                // get random card
-                var card = new Card(SuitType.Clubs, "2");
-                pack.Add(card);        
-            }                                                  
+                foreach (SuitType suit in Enum.GetValues(typeof(SuitType)))
+                {
+                    var card = new Card(suit, rank);
+                    pack.Add(card);
+                }
+            }                                            
                         
             return pack; 
         }

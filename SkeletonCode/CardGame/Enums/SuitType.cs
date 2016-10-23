@@ -1,4 +1,4 @@
-﻿namespace SkeletonCode.CardGame
+﻿namespace SkeletonCode.CardGame.Enums
 {
     public enum SuitType
     {

@@ -1,13 +1,15 @@
-﻿namespace SkeletonCode.CardGame
+﻿using SkeletonCode.CardGame.Enums;
+
+namespace SkeletonCode.CardGame
 {
     public class Card : ICard
     {
-        public string Value { get; private set; }
+        public Rank Rank { get; private set; }
         public SuitType Suit { get; private set; }
 
-        public Card(SuitType suit, string value)
+        public Card(SuitType suit, Rank rank)
         {
-            Value = value;
+            Rank = rank;
             Suit = suit;
         }
 

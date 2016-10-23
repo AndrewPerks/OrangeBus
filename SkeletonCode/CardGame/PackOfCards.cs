@@ -9,7 +9,7 @@ namespace SkeletonCode.CardGame
 	{
         public List<ICard> Cards = new List<ICard>();
 
-        public void Add(Card card)
+        public void Add(ICard card)
         {
             Cards.Add(card);
         }
@@ -28,16 +28,16 @@ namespace SkeletonCode.CardGame
 
 	    public void Shuffle()
 	    {
-            int n = Cards.Count;
+            int cardCount = Cards.Count;
             Random rnd = new Random();
             // Fisher-Yates algorithm
-            while (n > 1)
+            while (cardCount > 1)
             {
-                int k = (rnd.Next(0, n) % n);
-                n--;
+                int k = rnd.Next(0, cardCount) % cardCount;
+                cardCount--;
                 ICard value = Cards[k];
-                Cards[k] = Cards[n];
-                Cards[n] = value;
+                Cards[k] = Cards[cardCount];
+                Cards[cardCount] = value;
             }
 	    }
 

@@ -47,7 +47,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CardGame\PackOfCardsCreator.cs" />
-    <Compile Include="CardGame\SuitType.cs" />
+    <Compile Include="CardGame\Enums\Rank.cs" />
+    <Compile Include="CardGame\Enums\SuitType.cs" />
     <Compile Include="CurrencyConverter\Converter.cs" />
     <Compile Include="CurrencyConverter\Currency.cs" />
     <Compile Include="CurrencyConverter\InvalidCurrencyException.cs" />
